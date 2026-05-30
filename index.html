@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTR — Design Options</title>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e4da;
+      --accent: #6B2828;
+      --text: #1c1813;
+      --muted: #7a7265;
+      --radius: 10px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    header p.subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .badge {
+      background: #f3ede0;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #e4d9c4;
+      white-space: nowrap;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      max-width: 680px;
+      margin: 40px auto 12px;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .intro h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Options grid ── */
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 24px 32px 48px;
+      flex: 1;
+      max-width: 1600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .option-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .option-card:hover {
+      box-shadow: 0 4px 28px rgba(0,0,0,0.13);
+    }
+
+    .card-header {
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--surface);
+    }
+
+    .card-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .option-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .option-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, opacity 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .open-btn:hover {
+      background: #5a2020;
+    }
+
+    .open-btn svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ── iframe wrapper ── */
+    .iframe-wrap {
+      flex: 1;
+      position: relative;
+      height: 720px;
+      background: #f0ece2;
+    }
+
+    .iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .options {
+        grid-template-columns: 1fr;
+        padding: 16px 16px 40px;
+      }
+
+      header {
+        padding: 16px 20px;
+      }
+
+      .iframe-wrap {
+        height: 580px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <svg class="logo-mark" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="8" fill="#F1E8D2"/>
+        <rect x="10" y="7" width="16" height="22" fill="#6B2828" rx="1"/>
+        <rect x="12" y="9" width="12" height="18" fill="none" stroke="#1C1813" stroke-width="1"/>
+        <circle cx="21" cy="18" r="1" fill="#1C1813"/>
+      </svg>
+      <div>
+        <h1>Downtown Refinishing</h1>
+        <p class="subtitle">Design mockup review</p>
+      </div>
+    </div>
+    <span class="badge">Client Preview</span>
+  </header>
+
+  <div class="intro">
+    <h2>Two directions for your review</h2>
+    <p>Each option below is a fully interactive mockup. Scroll and click through both, then let us know which direction resonates — or what you'd like to blend from each.</p>
+  </div>
+
+  <div class="options">
+
+    <!-- Option A -->
+    <div class="option-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="option-label">Option A</span>
+          <span class="option-title">Cabinet Doors — Multifamily</span>
+        </div>
+        <a class="open-btn" href="DTR Mockup (share).html" target="_blank">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 1h4v4M11 1 6 6M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8"/>
+          </svg>
+          Open full page
+        </a>
+      </div>
+      <div class="iframe-wrap">
+        <iframe src="DTR Mockup (share).html" title="Option A — DTR Cabinet Doors Multifamily" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Option B -->
+    <div class="option-card">
+      <div class="card-header">
+        <div class="card-header-left">
+          <span class="option-label">Option B</span>
+          <span class="option-title">Production Floor / Form A — Tradesy</span>
+        </div>
+        <a class="open-btn" href="DTR Mockup B - Tradesy (share).html" target="_blank">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 1h4v4M11 1 6 6M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V8"/>
+          </svg>
+          Open full page
+        </a>
+      </div>
+      <div class="iframe-wrap">
+        <iframe src="DTR Mockup B - Tradesy (share).html" title="Option B — DTR Production Floor Tradesy" loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
