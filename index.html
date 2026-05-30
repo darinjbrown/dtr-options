@@ -277,5 +277,39 @@
 
   </div>
 
+  <script>
+    // The bundled mockup pages use a global error overlay (#__bundler_err) that
+    // catches all JS errors — including ones triggered only by the iframe context
+    // (e.g. blocked localStorage, routing code). Hide it so clients see a clean UI.
+    document.querySelectorAll('iframe').forEach(function (iframe) {
+      iframe.addEventListener('load', function () {
+        try {
+          var iDoc = iframe.contentDocument;
+          if (!iDoc) return;
+
+          function hideOverlay() {
+            var el = iDoc.getElementById('__bundler_err');
+            if (el) el.style.display = 'none';
+          }
+
+          // Watch for the overlay being added at any point after load
+          // (the bundler does document.documentElement.replaceWith async,
+          // so the overlay may appear well after the load event fires).
+          var obs = new MutationObserver(hideOverlay);
+          obs.observe(iDoc, { childList: true, subtree: true });
+
+          // Also poll briefly as a fallback for browsers that miss the mutation
+          var attempts = 0;
+          var timer = setInterval(function () {
+            hideOverlay();
+            if (++attempts >= 60) clearInterval(timer); // give up after ~6 s
+          }, 100);
+
+          hideOverlay();
+        } catch (e) { /* cross-origin guard — should not happen on same origin */ }
+      });
+    });
+  </script>
+
 </body>
 </html>
